@@ -1,0 +1,96 @@
+/*Question 
+
+
+Create a Webpage with an image at the left and create a three dropdown name as Brands,
+
+Age and Size
+
+1) Brand (Nike Puma Reebok,Adidas) 11) Age group (Children,young,mature) iii) Size
+
+(S,M,L,XL)
+
+Conditions- brand(nike) age (Children, young), if age is Children then-> size (S,M), if age is young
+
+then size->(L,XL)
+
+brand (puma)age (Children,mature), if age is Children then size (S.I.), if age is mature
+
+then size->(M.XL)
+
+brand(reebok) age (young,mature), if age is young then size (S.XL), if age is mature
+
+then size (ML)
+
+brand(adidas) age (young), if age is young then size (S,M,L,XL)
+
+*/
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Selection</title>
+  <script>
+    function updateSizeOptions() {
+      var brand = document.getElementById('brand').value;
+      var age = document.getElementById('age').value;
+      var size = document.getElementById('size');
+
+      // Reset the size dropdown
+      size.innerHTML = '';
+
+      // Define the size options based on brand and age
+      var options = [];
+
+      if (brand === 'nike' && age === 'Children') {
+        options = ['S', 'M'];
+      } else if (brand === 'nike' && age === 'young') {
+        options = ['L', 'XL'];
+      } else if (brand === 'puma' && age === 'Children') {
+        options = ['S', 'I'];
+      } else if (brand === 'puma' && age === 'mature') {
+        options = ['M', 'XL'];
+      } else if (brand === 'reebok' && age === 'young') {
+        options = ['S', 'XL'];
+      } else if (brand === 'reebok' && age === 'mature') {
+        options = ['ML'];
+      } else if (brand === 'adidas' && age === 'young') {
+        options = ['S', 'M', 'L', 'XL'];
+      }
+
+      // Add the size options to the dropdown
+      for (var i = 0; i < options.length; i++) {
+        var option = document.createElement('option');
+        option.text = options[i];
+        size.add(option);
+      }
+    }
+  </script>
+</head>
+<body>
+  <div>
+    <img src="image.jpg" alt="Product Image" style="float: left; margin-right: 20px; width: 200px; height: 200px;">
+    <div>
+      <label for="brand">Brand:</label>
+      <select id="brand" onchange="updateSizeOptions()">
+        <option value="nike">Nike</option>
+        <option value="puma">Puma</option>
+        <option value="reebok">Reebok</option>
+        <option value="adidas">Adidas</option>
+      </select>
+    </div>
+    <div>
+      <label for="age">Age group:</label>
+      <select id="age" onchange="updateSizeOptions()">
+        <option value="Children">Children</option>
+        <option value="young">Young</option>
+        <option value="mature">Mature</option>
+      </select>
+    </div>
+    <div>
+      <label for="size">Size:</label>
+      <select id="size"></select>
+    </div>
+  </div>
+</body>
+</html>
