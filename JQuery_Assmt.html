@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .A
+        {   display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 96vw;
+            background-color: aqua;
+
+        }
+
+        .Add_content
+        {
+            background-color: plum;
+            border: 2px double solid;
+            font-weight: bold;
+        }
+        .container
+        {
+            display: flex;
+            width: 96vw;
+            height: 20vh;
+            margin: 2% ;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #list
+        {
+            visibility: hidden;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <div class="A">
+        <button type="button" id="Add"  onclick="show()"> Add Content</button>
+    </div>
+
+    <div class="container">
+
+        <select id="list" onchange="add_div()">
+            <option selected disabled>..select value..</option>
+            <option value="append">Append</option>
+            <option value="prepend">Prepend</option>
+            <option value="after">After</option>
+            <option value="before">Before</option>
+            <option value="appendto">AppendTo</option>
+            <option value="prependTo">Prepend to</option>
+        </select>
+    </div>
+    
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        
+        function add_div(){
+        const list=document.getElementById('list');
+        const value=list.options[list.selectedIndex].value
+
+        switch(value)
+        {
+            case 'append':
+                var div=document.createElement('div')
+                div.innerHTML='Append'
+                div.style.width="90vw"
+                div.style.borderStyle="double"
+                div.style.backgroundColor="red";
+                $(".container").append(div)
+                break;
+           
+            case 'prepend':
+                var div=document.createElement('div')
+                div.innerHTML='Prepend'
+                div.style.width="90vw"
+                div.style.borderStyle="dotted"
+                div.style.backgroundColor="green";
+                $(".container").prepend(div)
+                break;
+
+             case 'after':
+                var div=document.createElement('div')
+                div.innerHTML='After'
+                div.style.width="90vw"
+                div.style.borderStyle="double"
+                div.style.backgroundColor="blue";
+                $(".container").after(div)
+                break;
+
+             case 'before':
+                var div=document.createElement('div')
+                div.innerHTML='Before'
+                div.style.width="90vw"
+                div.style.borderStyle="double"
+                div.style.backgroundColor="pink";
+                $(".container").before(div)
+                break;
+
+            case 'appendto':
+                var div=document.createElement('div')
+                div.innerHTML='AppendTo'
+                div.style.width="90vw"
+                div.style.borderStyle="dotted"
+                div.style.backgroundColor="yellow";
+                $(".container").appendTo(div)
+                break;
+
+            case 'prependTo':
+                var div=document.createElement('div')
+                div.innerHTML='PrependTo'
+                div.style.width="90vw"
+                div.style.borderStyle="double"
+                div.style.backgroundColor="orange";
+                $(".container").prependTo(div)
+                break;
+        }
+    }
+
+        function show()
+        {
+            document.getElementById('list').style.visibility='visible'
+        }
+    
+
+    </script>
+</body>
+</html>
